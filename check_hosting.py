@@ -3,6 +3,9 @@ import socket
 import re
 from flask import Flask, request, render_template
 
+# IP address of your hosting
+IP = 'xxx.xxx.xxx.xxx'
+
 app = Flask(__name__)
 
 
@@ -20,8 +23,8 @@ def ping_host():
                 on_host = u'<p class="lead red">Введите нормальный домен, не могу срезолвить!</p>'
 		context = {'host': host, 'ip': ip, 'on_host': on_host}
 	        return render_template('result.tpl', **context), 200
-	    if ip == '88.198.29.150':
-	        on_host = u'<p class="lead green">Этот сайт находится на Catamba хостинге!</p>'
+	    if ip == IP:
+	        on_host = u'<p class="lead green">Этот сайт находится на нашем хостинге!</p>'
 	    else:
 	        on_host = u'<p class="lead red">Этот сайт не на нашем хостинге!</p>'
 	else:
